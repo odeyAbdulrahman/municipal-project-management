@@ -1,0 +1,201 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Sharjah Digital Theme - CSS Variables */
+  :root {
+  /* Primary Colors */
+  --color-primary-50: 246 250 247;
+  --color-primary-100: 232 245 234;
+  --color-primary-200: 212 235 216;
+  --color-primary-300: 178 217 187;
+  --color-primary-400: 148 209 164;
+  --color-primary-500: 0 88 52;
+  --color-primary-600: 0 74 45;
+  --color-primary-700: 0 61 37;
+  --color-primary-800: 0 50 30;
+  --color-primary-900: 0 40 24;
+
+  /* Secondary Colors */
+  --color-secondary-50: 250 250 248;
+  --color-secondary-100: 246 246 243;
+  --color-secondary-200: 244 244 239;
+  --color-secondary-300: 241 241 234;
+  --color-secondary-400: 234 234 226;
+  --color-secondary-500: 229 229 222;
+  --color-secondary-600: 213 214 213;
+  --color-secondary-700: 171 174 172;
+  --color-secondary-800: 167 167 158;
+  --color-secondary-900: 86 94 89;
+
+  /* Dark Colors */
+  --color-dark-50: 248 249 248;
+  --color-dark-100: 232 234 233;
+  --color-dark-200: 208 212 209;
+  --color-dark-300: 65 74 69;
+  --color-dark-400: 44 51 47;
+  --color-dark-500: 33 37 41;
+  --color-dark-600: 26 30 33;
+  --color-dark-700: 20 23 26;
+  --color-dark-800: 15 17 19;
+  --color-dark-900: 10 12 13;
+
+  /* Accent Colors */
+  --color-accent-blue: 13 110 253;
+  --color-accent-orange: 255 146 0;
+
+  /* Semantic Colors */
+  --color-background: 250 250 248;
+  --color-foreground: 33 37 41;
+  --color-muted: 241 241 234;
+  --color-border: 229 229 222;
+
+  /* Font Families */
+  --font-cairo: 'Cairo', sans-serif;
+  --font-neue-frutiger-arabic: 'Neue Frutiger Arabic', sans-serif;
+  --font-archivo: 'Archivo', sans-serif;
+  --font-sans: 'Cairo', 'Neue Frutiger Arabic', 'Archivo', system-ui, sans-serif;
+
+  /* Font Weights */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+  --font-weight-heavy: 800;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Cairo", "Segoe UI", "Tahoma", "Geneva", "Verdana", sans-serif;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+}
+
+/* RTL Support */
+[dir="rtl"] .space-x-reverse > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 1;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--color-primary-500));
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--color-primary-500) / 0.8);
+}
+
+/* Smooth animations */
+* {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow,
+    transform, filter, backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* Enhanced focus styles */
+.focus-visible:focus-visible {
+  outline: 2px solid rgb(var(--color-primary-500));
+  outline-offset: 2px;
+}
+
+/* Sharjah gradient text */
+.sharjah-gradient-text {
+  background: linear-gradient(135deg, rgb(var(--color-primary-500)) 0%, rgb(var(--color-accent-blue)) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Card hover effects */
+.card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(var(--color-primary-500), 0.1), 0 10px 10px -5px rgba(var(--color-primary-500), 0.04);
+}
+
+/* Loading animation */
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Glass morphism effect with Sharjah colors */
+.glass {
+  background: rgba(var(--color-primary-500), 0.1);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(var(--color-primary-500), 0.18);
+}
+
+/* Usage examples with CSS variables */
+.bg-primary {
+  background-color: rgb(var(--color-primary-500));
+}
+
+.text-primary {
+  color: rgb(var(--color-primary-500));
+}
+
+.bg-secondary {
+  background-color: rgb(var(--color-secondary-50));
+}
+
+.text-dark {
+  color: rgb(var(--color-dark-500));
+}
+
+.font-cairo {
+  font-family: var(--font-cairo);
+}
+
+.font-neue-frutiger {
+  font-family: var(--font-neue-frutiger-arabic);
+}
+
+.font-archivo {
+  font-family: var(--font-archivo);
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: 33 37 41;
+    --color-foreground: 250 250 248;
+    --color-muted: 65 74 69;
+    --color-border: 86 94 89;
+  }
+}
+
+/* Prevent body scrolling when mobile sidebar is open */
+body.sidebar-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
